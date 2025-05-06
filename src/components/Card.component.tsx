@@ -8,9 +8,10 @@ interface IProps {
   user: TUser;
   onClick: (data: TSelectedPost) => void;
   isDarkMode: boolean;
+  pageHandler: (page: TUser) => void;
 }
 
-const Card: FC<IProps> = ({ data, user, onClick, isDarkMode }) => {
+const Card: FC<IProps> = ({ data, user, onClick, isDarkMode, pageHandler }) => {
   const userInitials: string = `${user.name.split(" ")[0].charAt(0)}${user.name
     .split(" ")[1]
     .charAt(0)}`;
@@ -41,7 +42,12 @@ const Card: FC<IProps> = ({ data, user, onClick, isDarkMode }) => {
           }`}
         >
           Pubblicato da:{" "}
-          <span className="text-red underline">{user.username}</span>
+          <span
+            onClick={() => pageHandler(user)}
+            className="text-red underline cursor-pointer"
+          >
+            {user.username}
+          </span>
         </span>
       </div>
     </div>

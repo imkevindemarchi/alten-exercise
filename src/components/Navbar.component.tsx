@@ -1,4 +1,5 @@
 import React, { FC, useContext } from "react";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 // Assets
 import logoImg from "../assets/images/logo.png";
@@ -18,13 +19,15 @@ const Navbar: FC<IProps> = ({ isDarkMode }) => {
   const { onStateChange: onThemeHandler }: TThemeContext = useContext(
     ThemeContext
   ) as TThemeContext;
+  const navigate: NavigateFunction = useNavigate();
 
   return (
     <div className="w-full h-20 flex flex-row items-center justify-between mobile:justify-center mobile:gap-5 p-20">
       <img
         src={logoImg}
         alt="Impossibile visualizzare l'immagine."
-        className="h-20 object-contain"
+        className="h-20 object-contain cursor-pointer hover:opacity-50 transition-all duration-300"
+        onClick={() => navigate("/")}
       />
       <button
         onClick={onThemeHandler}

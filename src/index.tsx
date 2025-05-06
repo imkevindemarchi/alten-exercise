@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 
 // Assets
 import "./index.css";
@@ -16,7 +17,9 @@ const root = ReactDOM.createRoot(
 
 const app: ReactNode = (
   <ThemeProvider>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </ThemeProvider>
 );
 
